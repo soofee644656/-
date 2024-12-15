@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Platform | منصة الاستثمار</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0056b3;
+            padding: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .language-switch {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .language-switch button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .language-switch button:hover {
+            background-color: #007BFF;
+        }
+        .hidden {
+            display: none;
+        }
+        .hero {
+            background-image: url('https://example.com/dollar-image.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .hero h1, .hero p {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .feature {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .feature h3 {
+            color: #007BFF;
+        }
+        .form-container {
+            padding: 2rem;
+            background-color: #e9ecef;
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        form input, form textarea, form button {
+            width: 100%;
+            margin: 0.5rem 0;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        footer p {
+            margin: 0;
+        }
+        .verification-form {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .verification-form input {
+            width: 70%;
+            padding: 0.8rem;
+            margin: 1rem 0;
+        }
+    </style>
+    <script>
+        // Switch between languages
+        function switchLanguage(lang) {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                if (element.getAttribute('data-lang') === lang) {
+                    element.classList.remove('hidden');
+                } else {
+                    element.classList.add('hidden');
+                }
+            });
+        }
+
+        // Simulate OTP sending (For production use a service like Twilio or SendGrid)
+        function sendOTP() {
+            const otp = Math.floor(100000 + Math.random() * 900000); // 6 digit OTP
+            alert("Your OTP is: " + otp);
+            return otp;
+        }
+        
+        // Handle form submission and OTP verification
+        function handleVerification(event) {
+            event.preventDefault();
+            const enteredOTP = document.getElementById('otp').value;
+            const originalOTP = sendOTP(); // Replace this with actual OTP verification
+
+            if (enteredOTP == originalOTP) {
+                alert("Verification successful!");
+            } else {
+                alert("Invalid OTP!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1 data-lang="en">Welcome to Investment Platform</h1>
+        <h1 data-lang="ar" class="hidden">مرحباً بكم في منصة الاستثمار</h1>
+    </header>
+    <div class="language-switch">
+        <button onclick="switchLanguage('en')">English</button>
+        <button onclick="switchLanguage('ar')">العربية</button>
+    </div>
+    <nav>
+        <a href="#about" data-lang="en">About Us</a>
+        <a href="#about" data-lang="ar" class="hidden">من نحن</a>
+        <a href="#services" data-lang="en">Services</a>
+        <a href="#services" data-lang="ar" class="hidden">خدماتنا</a>
+        <a href="#reviews" data-lang="en">Reviews</a>
+        <a href="#reviews" data-lang="ar" class="hidden">آراء العملاء</a>
+        <a href="#contact" data-lang="en">Contact</a>
+        <a href="#contact" data-lang="ar" class="hidden">اتصل بنا</a>
+    </nav>
+    
+    <section class="hero">
+        <h1 data-lang="en">Grow Your Wealth with Us</h1>
+        <h1 data-lang="ar" class="hidden">نمِّ ثروتك معنا</h1>
+        <p data-lang="en">Your trusted partner for smart investments</p>
+        <p data-lang="ar" class="hidden">شريكك الموثوق للاستثمار الذكي</p>
+    </section>
+
+    <section class="form-container">
+        <h2 data-lang="en">Register Now</h2>
+        <h2 data-lang="ar" class="hidden">سجل الآن</h2>
+        <form id="registerForm">
+            <label for="email" data-lang="en">Email:</label>
+            <label for="email" data-lang="ar" class="hidden">البريد الإلكتروني:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="phone" data-lang="en">Phone (optional):</label>
+            <label for="phone" data-lang="ar" class="hidden">رقم الهاتف (اختياري):</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter your phone number (optional)">
+            
+            <button type="submit" data-lang="en">Register</button>
+            <button type="submit" data-lang="ar" class="hidden">تسجيل</button>
+        </form>
+    </section>
+
+    <section id="verification" class="verification-form">
+        <h2 data-lang="en">Verify Your Account</h2>
+        <h2 data-lang="ar" class="hidden">تحقق من حسابك</h2>
+        <form onsubmit="handleVerification(event)">
+            <label for="otp" data-lang="en">Enter OTP:</label>
+            <label for="otp" data-lang="ar" class="hidden">أدخل الرمز المرسل:</label>
+            <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+            <button type="submit" data-lang="en">Verify</button>
+            <button type="submit" data-lang="ar" class="hidden">التحقق</button>
+        </form>
+    </section>
+    
+    <footer>
+        <p data-lang="en">&copy; 2024 Investment Platform. All rights reserved.</p>
+        <p data-lang="ar" class="hidden">&copy; 2024 منصة الاستثمار. جميع الحقوق محفوظة.</p>
+    </footer>
+</body>
+</html>
